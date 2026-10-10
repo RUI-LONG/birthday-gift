@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茂維生日快樂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============== RESET & BASE ============== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8d48b;
+  --gold-dark: #8a6d2b;
+  --crimson: #8b1a1a;
+  --crimson-deep: #5a0f0f;
+  --bg-dark: #0a0a0f;
+  --bg-card: #111118;
+  --text-primary: #e8e0d0;
+  --text-dim: #9a9080;
+  --wax-red: #8b1a1a;
+  --wax-red-light: #b42b2b;
+  --wax-red-dark: #4a0808;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-dark);
+}
+
+body {
+  font-family: 'Noto Serif TC', 'Cormorant Garamond', serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ============== AMBIENT BACKGROUND ============== */
+.ambient-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: 
+    radial-gradient(ellipse 600px 600px at 20% 20%, rgba(139,26,26,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 800px at 80% 60%, rgba(201,168,76,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 50% 80%, rgba(139,26,26,0.06) 0%, transparent 70%);
+  animation: ambientDrift 30s ease-in-out infinite;
+}
+
+@keyframes ambientDrift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-30px, 20px) rotate(1deg); }
+  66% { transform: translate(20px, -30px) rotate(-1deg); }
+}
+
+/* Floating particles */
+.particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% { opacity: 0; transform: translateY(100vh) scale(0); }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+}
+
+/* ============== HEADER / HERO ============== */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero-ornament {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 40px;
+  position: relative;
+}
+
+.hero-ornament::before {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold);
+  font-size: 12px;
+  background: var(--bg-dark);
+  padding: 0 12px;
+}
+
+.title-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.title-sub {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  letter-spacing: 1.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.title-main {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: transparent;
+  background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 40%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+  text-shadow: none;
+  position: relative;
+  filter: drop-shadow(0 0 40px rgba(201,168,76,0.15));
+}
+
+.title-english {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.8em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.hero-desc {
+  max-width: 600px;
+  margin: 40px auto 0;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 2;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.hero-ornament-bottom {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+  margin: 50px auto 0;
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scroll-hint .arrow {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(180deg, var(--gold-dark), transparent);
+  position: relative;
+}
+
+.scroll-hint .arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid var(--gold-dark);
+  border-bottom: 1px solid var(--gold-dark);
+  transform: rotate(45deg);
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.6; transform: translateX(-50%) translateY(5px); }
+}
+
+/* ============== RULES SECTION ============== */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 20px;
+}
+
+.section-divider {
+  width: 100%;
+  max-width: 600px;
+  height: 1px;
+  margin: 0 auto 80px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+  position: relative;
+}
+
+.section-divider::before {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold-dark);
+  font-size: 14px;
+  background: var(--bg-dark);
+  padding: 0 20px;
+}
+
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 50px;
+}
+
+.rules-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  background: linear-gradient(135deg, rgba(17,17,24,0.9), rgba(20,18,15,0.9));
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 4px;
+  position: relative;
+}
+
+.rules-container::before,
+.rules-container::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--gold-dark);
+  opacity: 0.5;
+}
+
+.rules-container::before {
+  top: 12px; left: 12px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.rules-container::after {
+  bottom: 12px; right: 12px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.rules-text {
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  line-height: 2.2;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  text-align: justify;
+}
+
+/* ============== ENVELOPES SECTION ============== */
+.envelopes-section {
+  padding: 80px 20px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.envelopes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============== ENVELOPE ============== */
+.envelope-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  perspective: 1200px;
+}
+
+.envelope-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  opacity: 0.6;
+  transition: opacity 0.4s;
+}
+
+.envelope-wrapper:hover .envelope-label {
+  opacity: 1;
+  color: var(--gold);
+}
+
+.envelope {
+  position: relative;
+  width: 220px;
+  height: 300px;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.envelope-wrapper:hover .envelope {
+  transform: translateY(-8px);
+}
+
+/* Envelope body */
+.envelope-body {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #2a2218 0%, #1a1510 40%, #15120e 100%);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 40px rgba(0,0,0,0.6),
+    0 0 1px rgba(201,168,76,0.3),
+    inset 0 0 60px rgba(0,0,0,0.3);
+}
+
+/* Paper texture overlay */
+.envelope-body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(201,168,76,0.02) 3px,
+      rgba(201,168,76,0.02) 4px
+    );
+  pointer-events: none;
+}
+
+/* Envelope flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, #2e2519 0%, #1e1a14 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 90%);
+  border: 1px solid rgba(201,168,76,0.15);
+  z-index: 2;
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.envelope-flap::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.1), transparent);
+}
+
+/* Wax Seal */
+.wax-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  z-index: 5;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.wax-seal-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--wax-red-light) 0%, var(--wax-red) 50%, var(--wax-red-dark) 100%);
+  box-shadow:
+    0 3px 10px rgba(0,0,0,0.5),
+    0 0 20px rgba(139,26,26,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(180,43,43,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Wax drips */
+.wax-seal-circle::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 15px;
+  width: 40px;
+  height: 20px;
+  background: radial-gradient(ellipse, var(--wax-red) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.wax-seal-circle::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 10px;
+  width: 30px;
+  height: 16px;
+  background: radial-gradient(ellipse, var(--wax-red-dark) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.seal-emblem {
+  font-size: 26px;
+  color: rgba(74,8,8,0.7);
+  text-shadow: 
+    0 1px 0 rgba(180,43,43,0.5),
+    0 -1px 0 rgba(0,0,0,0.3);
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 900;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Open state */
+.envelope-wrapper.opened .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-wrapper.opened .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.5) rotate(20deg);
+}
+
+/* Seal crack animation */
+@keyframes sealCrack {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  20% { transform: translate(-50%, -50%) scale(1.1) rotate(-5deg); }
+  40% { transform: translate(-50%, -50%) scale(1.05) rotate(3deg); }
+  60% { transform: translate(-50%, -50%) scale(1.15) rotate(-2deg); }
+  80% { transform: translate(-50%, -50%) scale(1.3) rotate(10deg); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.5) rotate(20deg); opacity: 0; }
+}
+
+.envelope-wrapper.opening .wax-seal {
+  animation: sealCrack 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes flapOpen {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(180deg); }
+}
+
+.envelope-wrapper.opening .envelope-flap {
+  animation: flapOpen 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.3s forwards;
+}
+
+/* Wax crumbles */
+.wax-fragment {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--wax-red);
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes fragmentFly {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) rotate(var(--tr)) scale(0.3); }
+}
+
+/* Hint text */
+.envelope-hint {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  opacity: 0;
+  transition: opacity 0.4s;
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
+
+.envelope-wrapper:hover .envelope-hint {
+  opacity: 0.6;
+}
+
+.envelope-wrapper.opened .envelope-hint {
+  opacity: 0;
+}
+
+/* ============== MODAL / ROLE CARD ============== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(5,5,8,0.92);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.role-card {
+  width: 100%;
+  max-width: 560px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: linear-gradient(160deg, #15130f 0%, #0e0c0a 100%);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px;
+  padding: 50px 40px;
+  position: relative;
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 
+    0 30px 80px rgba(0,0,0,0.8),
+    0 0 1px rgba(201,168,76,0.4);
+}
+
+.role-card::-webkit-scrollbar {
+  width: 4px;
+}
+.role-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+.role-card::-webkit-scrollbar-thumb {
+  background: rgba(201,168,76,0.2);
+  border-radius: 2px;
+}
+
+.modal-overlay.active .role-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Corner ornaments */
+.role-card::before,
+.role-card::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: var(--gold-dark);
+  opacity: 0.4;
+}
+.role-card::before {
+  top: 16px; left: 16px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.role-card::after {
+  bottom: 16px; right: 16px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.card-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: 'Cinzel', serif;
+  z-index: 10;
+}
+
+.card-close:hover {
+  color: var(--gold);
+}
+
+.card-role-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+
+.card-role-type {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 30px;
+}
+
+.card-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dark), transparent);
+  margin-bottom: 30px;
+}
+
+.card-section {
+  margin-bottom: 24px;
+}
+
+.card-section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+}
+
+.card-section-text {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+}
+
+.card-section-text.secret {
+  color: var(--crimson);
+  font-style: italic;
+}
+
+/* Puzzle input area */
+.puzzle-area {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 4px;
+}
+
+.puzzle-area label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 10px;
+}
+
+.puzzle-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.puzzle-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 3px;
+  color: var(--text-primary);
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.puzzle-input:focus {
+  border-color: var(--gold);
+}
+
+.puzzle-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border: none;
+  border-radius: 3px;
+  color: var(--bg-dark);
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.puzzle-btn:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  transform: translateY(-1px);
+}
+
+.puzzle-result {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  min-height: 1.5em;
+}
+
+.puzzle-result.success {
+  color: #4caf50;
+}
+
+.puzzle-result.fail {
+  color: var(--crimson);
+}
+
+/* Ability locked/unlocked state */
+.ability-locked {
+  opacity: 0.4;
+  position: relative;
+}
+
+.ability-locked::after {
+  content: '🔒 解開謎題以解鎖能力';
+  display: block;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.ability-unlocked {
+  opacity: 1;
+  position: relative;
+}
+
+.ability-unlocked::before {
+  content: '🔓';
+  margin-right: 6px;
+}
+
+/* ============== FOOTER ============== */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 20px;
+  border-top: 1px solid rgba(201,168,76,0.08);
+}
+
+footer p {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  opacity: 0.4;
+}
+
+/* ============== ANIMATIONS ============== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.fade-in-d1 { animation-delay: 0.2s; }
+.fade-in-d2 { animation-delay: 0.4s; }
+.fade-in-d3 { animation-delay: 0.6s; }
+.fade-in-d4 { animation-delay: 0.8s; }
+.fade-in-d5 { animation-delay: 1.0s; }
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 768px) {
+  .envelopes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .envelope {
+    width: 180px;
+    height: 250px;
+  }
+  
+  .wax-seal {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .seal-emblem {
+    font-size: 20px;
+  }
+  
+  .role-card {
+    padding: 35px 25px;
+  }
+  
+  .rules-container {
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .envelopes-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Ambient Background -->
+<div class="ambient-bg"></div>
+
+<!-- Floating Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-ornament fade-in"></div>
+  
+  <div class="title-container fade-in fade-in-d1">
+    <div class="title-sub">The Scheme of</div>
+    <h1 class="title-main">瑞龍的計謀</h1>
+    <div class="title-english">The Dragon's Scheme</div>
+  </div>
+
+  <p class="hero-desc fade-in fade-in-d2">
+    四位玩家，各懷秘密。<br>
+    在策略與欺瞞之間，唯有最終的贏家才能揭曉真相。
+  </p>
+
+  <div class="hero-ornament-bottom fade-in fade-in-d3"></div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ====== RULES ====== -->
+<section class="section" id="rules">
+  <div class="section-divider"></div>
+  <h2 class="section-title fade-in">遊 戲 規 則</h2>
+  
+  <div class="rules-container fade-in fade-in-d1">
+    <p class="rules-text">
+      遊戲開始前，每位玩家會收到一張不可公開的角色卡，上面記載著你的身分、能力與秘密任務。請牢記你的使命，也留意他人的行動——因為你永遠無法確定，身邊的人究竟是盟友還是對手。
+    </p>
+    <br>
+    <p class="rules-text">
+      全體玩家必須依照數字順序，逐一前往各個地點完成團體任務，不可跳關。每個地點的附近（不在建築物內）藏有兩枚硬幣，眼明手快者方可獲得。唯有所有團體任務皆已完成，終點才會開啟。
+    </p>
+    <br>
+    <p class="rules-text">
+      然而，通關並非唯一目的。每個人都有屬於自己的勝利條件——有人需要蒐集最多硬幣，有人則試圖讓一切計畫脫軌。信任誰、何時出手、何時隱忍，這些抉擇將決定最終的贏家。
+    </p>
+  </div>
+</section>
+
+<!-- ====== CHARACTER ENVELOPES ====== -->
+<section class="envelopes-section" id="characters">
+  <div class="section-divider"></div>
+  <h2 class="section-title fade-in">角 色 密 函</h2>
+
+  <div class="envelopes-grid">
+    <!-- Envelope A -->
+    <div class="envelope-wrapper fade-in fade-in-d1" data-role="A" onclick="openEnvelope(this, 'A')">
+      <div class="envelope-label">Player A</div>
+      <div class="envelope">
+        <div class="envelope-body"></div>
+        <div class="envelope-flap"></div>
+        <div class="wax-seal">
+          <div class="wax-seal-circle">
+            <span class="seal-emblem">A</span>
+          </div>
+        </div>
+      </div>
+      <div class="envelope-hint">點擊開啟密函</div>
+    </div>
+
+    <!-- Envelope B -->
+    <div class="envelope-wrapper fade-in fade-in-d2" data-role="B" onclick="openEnvelope(this, 'B')">
+      <div class="envelope-label">Player B</div>
+      <div class="envelope">
+        <div class="envelope-body"></div>
+        <div class="envelope-flap"></div>
+        <div class="wax-seal">
+          <div class="wax-seal-circle">
+            <span class="seal-emblem">B</span>
+          </div>
+        </div>
+      </div>
+      <div class="envelope-hint">點擊開啟密函</div>
+    </div>
+
+    <!-- Envelope C -->
+    <div class="envelope-wrapper fade-in fade-in-d3" data-role="C" onclick="openEnvelope(this, 'C')">
+      <div class="envelope-label">Player C</div>
+      <div class="envelope">
+        <div class="envelope-body"></div>
+        <div class="envelope-flap"></div>
+        <div class="wax-seal">
+          <div class="wax-seal-circle">
+            <span class="seal-emblem">C</span>
+          </div>
+        </div>
+      </div>
+      <div class="envelope-hint">點擊開啟密函</div>
+    </div>
+
+    <!-- Envelope D -->
+    <div class="envelope-wrapper fade-in fade-in-d4" data-role="D" onclick="openEnvelope(this, 'D')">
+      <div class="envelope-label">Player D</div>
+      <div class="envelope">
+        <div class="envelope-body"></div>
+        <div class="envelope-flap"></div>
+        <div class="wax-seal">
+          <div class="wax-seal-circle">
+            <span class="seal-emblem">D</span>
+          </div>
+        </div>
+      </div>
+      <div class="envelope-hint">點擊開啟密函</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <p>瑞龍的計謀 &mdash; The Dragon's Scheme</p>
+</footer>
+
+<!-- ====== MODAL ====== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="role-card" id="roleCard" onclick="event.stopPropagation()">
+    <button class="card-close" onclick="closeModalDirect()">✕</button>
+    <div id="roleContent"></div>
+  </div>
+</div>
+
+<script>
+// ===== ROLE DATA =====
+const roles = {
+  A: {
+    name: '調查員',
+    type: '一般玩家 · 身分不可公開',
+    sections: [
+      { label: '團體任務', text: '幫助大家成功抵達終點。秘密地幫助其他人，但不可以被知道身分。' },
+      { label: '個人任務', text: '取得全場最多硬幣。' },
+      { label: '特殊能力', text: '可秘密地使用緊急求救卡向主持人詢問線索。你共有兩張求救卡，每張限用一次——銀色卡片可獲得小提示，金色卡片可獲得大提示。' },
+      { label: '勝利條件', text: '團體任務成功完成，並在全場玩家中取得最多硬幣。' }
+    ],
+    hasPuzzle: false
+  },
+  B: {
+    name: '??家',
+    type: '一般玩家 · 身分不可公開',
+    sections: [
+      { label: '團體任務', text: '幫助大家成功抵達終點。' },
+      { label: '個人任務', text: '取得全場最多硬幣。' },
+      { label: '特殊能力', text: '解開個人謎題後，可無條件搶奪任何一位玩家的一枚硬幣。', locked: true },
+      { label: '勝利條件', text: '團體任務成功完成，並在全場玩家中取得最多硬幣。' }
+    ],
+    hasPuzzle: true,
+    puzzleAnswer: '豬',
+    puzzleId: 'B'
+  },
+  C: {
+    name: '決鬥者',
+    type: '一般玩家 · 身分不可公開',
+    sections: [
+      { label: '團體任務', text: '幫助大家成功抵達終點。' },
+      { label: '個人任務', text: '取得全場最多硬幣。' },
+      { label: '特殊能力', text: '解開個人謎題後，可在最終場所向一位玩家發起決鬥。勝者奪取敗者的所有硬幣。', locked: true },
+      { label: '勝利條件', text: '團體任務成功完成，並在全場玩家中取得最多硬幣。' }
+    ],
+    hasPuzzle: true,
+    puzzleAnswer: '地',
+    puzzleId: 'C'
+  },
+  D: {
+    name: '阻撓者',
+    type: '秘密對抗角色 · 身分不可公開',
+    sections: [
+      { label: '個人任務', text: '妨礙其他人解題，取得全場最多硬幣。' },
+      { label: '特殊能力', text: '解開個人謎題後，你將知道所有團體任務的答案。', locked: true },
+      { label: '勝利條件', text: '若團體最終雖成功抵達終點但超過時限，阻撓者獲得勝利。若團體在時限內成功通關，阻撓者仍可憑硬幣數量爭取個人排名。' }
+    ],
+    hasPuzzle: true,
+    puzzleAnswer: '3064',
+    puzzleId: 'D'
+  }
+};
+
+// Track unlocked puzzles
+const unlockedPuzzles = {};
+
+// ===== PARTICLES =====
+function createParticles() {
+  const container = document.getElementById('particles');
+  const count = 25;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (15 + Math.random() * 25) + 's';
+    p.style.animationDelay = Math.random() * 20 + 's';
+    p.style.width = (1 + Math.random() * 2) + 'px';
+    p.style.height = p.style.width;
+    p.style.opacity = 0;
+    container.appendChild(p);
+  }
+}
+createParticles();
+
+// ===== WAX FRAGMENTS =====
+function createWaxFragments(seal) {
+  const rect = seal.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 12; i++) {
+    const frag = document.createElement('div');
+    frag.classList.add('wax-fragment');
+    frag.style.left = cx + 'px';
+    frag.style.top = cy + 'px';
+    frag.style.position = 'fixed';
+    frag.style.zIndex = '50';
+
+    const angle = (Math.PI * 2 / 12) * i + (Math.random() - 0.5) * 0.5;
+    const dist = 40 + Math.random() * 80;
+    const tx = Math.cos(angle) * dist;
+    const ty = Math.sin(angle) * dist - 20;
+    const tr = (Math.random() - 0.5) * 720;
+
+    frag.style.setProperty('--tx', tx + 'px');
+    frag.style.setProperty('--ty', ty + 'px');
+    frag.style.setProperty('--tr', tr + 'deg');
+    frag.style.width = (3 + Math.random() * 6) + 'px';
+    frag.style.height = (3 + Math.random() * 5) + 'px';
+    frag.style.background = `hsl(${0 + Math.random() * 10}, ${60 + Math.random() * 20}%, ${25 + Math.random() * 15}%)`;
+    frag.style.animation = `fragmentFly ${0.6 + Math.random() * 0.4}s cubic-bezier(0.23, 1, 0.32, 1) forwards`;
+    frag.style.animationDelay = (Math.random() * 0.15) + 's';
+
+    document.body.appendChild(frag);
+    setTimeout(() => frag.remove(), 1200);
+  }
+}
+
+// ===== OPEN ENVELOPE =====
+function openEnvelope(wrapper, roleKey) {
+  if (wrapper.classList.contains('opened') || wrapper.classList.contains('opening')) {
+    showModal(roleKey);
+    return;
+  }
+
+  // Create wax fragments
+  const seal = wrapper.querySelector('.wax-seal');
+  createWaxFragments(seal);
+
+  // Trigger opening animation
+  wrapper.classList.add('opening');
+
+  // After animation completes, mark as opened and show modal
+  setTimeout(() => {
+    wrapper.classList.remove('opening');
+    wrapper.classList.add('opened');
+    showModal(roleKey);
+  }, 1200);
+}
+
+// ===== MODAL =====
+function showModal(roleKey) {
+  const role = roles[roleKey];
+  const overlay = document.getElementById('modalOverlay');
+  const content = document.getElementById('roleContent');
+
+  let html = `
+    <div class="card-role-name">${role.name}</div>
+    <div class="card-role-type">${role.type}</div>
+    <div class="card-divider"></div>
+  `;
+
+  role.sections.forEach(sec => {
+    const isLocked = sec.locked && !unlockedPuzzles[roleKey];
+    const cls = isLocked ? 'ability-locked' : (sec.locked && unlockedPuzzles[roleKey] ? 'ability-unlocked' : '');
+    html += `
+      <div class="card-section">
+        <div class="card-section-label">${sec.label}</div>
+        <div class="card-section-text ${cls}">${sec.text}</div>
+      </div>
+    `;
+  });
+
+  if (role.hasPuzzle) {
+    const isUnlocked = unlockedPuzzles[roleKey];
+    html += `
+      <div class="puzzle-area">
+        <label>個人謎題驗證</label>
+        ${isUnlocked ? 
+          '<div class="puzzle-result success">✦ 謎題已解開，能力已解鎖</div>' :
+          `<div class="puzzle-input-group">
+            <input type="text" class="puzzle-input" id="puzzleInput_${roleKey}" placeholder="輸入答案..." onkeydown="if(event.key==='Enter')checkPuzzle('${roleKey}')">
+            <button class="puzzle-btn" onclick="checkPuzzle('${roleKey}')">驗證</button>
+          </div>
+          <div class="puzzle-result" id="puzzleResult_${roleKey}"></div>`
+        }
+      </div>
+    `;
+  }
+
+  content.innerHTML = html;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(event) {
+  if (event.target === document.getElementById('modalOverlay')) {
+    closeModalDirect();
+  }
+}
+
+function closeModalDirect() {
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===== PUZZLE CHECK =====
+function checkPuzzle(roleKey) {
+  const input = document.getElementById(`puzzleInput_${roleKey}`);
+  const result = document.getElementById(`puzzleResult_${roleKey}`);
+  const role = roles[roleKey];
+
+  if (!input || !result) return;
+
+  const answer = input.value.trim();
+  if (answer === role.puzzleAnswer) {
+    unlockedPuzzles[roleKey] = true;
+    result.className = 'puzzle-result success';
+    result.textContent = '✦ 正確！能力已解鎖。';
+    // Re-render to update locked sections
+    setTimeout(() => showModal(roleKey), 600);
+  } else {
+    result.className = 'puzzle-result fail';
+    result.textContent = '✗ 答案錯誤，請再試一次。';
+    input.value = '';
+    // Shake animation
+    input.style.animation = 'none';
+    input.offsetHeight; // trigger reflow
+    input.style.animation = 'shake 0.4s ease';
+  }
+}
+
+// Shake animation for wrong answer
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+  }
+`;
+document.head.appendChild(shakeStyle);
+
+// ===== INTERSECTION OBSERVER FOR FADE-IN =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animationPlayState = 'running';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  // Don't pause hero animations
+  if (!el.closest('.hero')) {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  }
+});
+
+// ===== ESC TO CLOSE MODAL =====
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModalDirect();
+});
+</script>
+
+</body>
+</html>

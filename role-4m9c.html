@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茂維生日快樂</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Noto+Serif+TC:wght@400;600;700;900&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold-pure: #ffd700;
+  --gold-glow: #fff4b8;
+  --gold-light: #f5d77f;
+  --gold-main: #dfba6a;
+  --gold-mid: #c59b3f;
+  --gold-dark: #8c681e;
+  --gold-deep: #4d380e;
+  
+  --bg-deep: #070609;
+  --bg-card: #121017;
+  --bg-panel: #161420;
+  
+  --text-gold-bright: #fff6d8;
+  --text-gold-body: #ebd9b0;
+  --text-gold-muted: #bda67d;
+
+  --wax-bright: #c82424;
+  --wax-main: #8a1212;
+  --wax-deep: #460606;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-gold-body);
+  font-family: 'Noto Serif TC', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Ambient Fire Background Layer */
+.ambient-fire-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.fire-glow-top {
+  position: absolute;
+  top: -12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 180vw);
+  height: min(700px, 65vh);
+  background: radial-gradient(ellipse at center, rgba(245, 160, 40, 0.22) 0%, rgba(195, 55, 15, 0.12) 42%, transparent 72%);
+  animation: fireBreathTop 7s ease-in-out infinite alternate;
+}
+
+.fire-glow-bottom {
+  position: absolute;
+  bottom: -18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1250px, 190vw);
+  height: min(750px, 70vh);
+  background: radial-gradient(ellipse at center, rgba(225, 75, 20, 0.2) 0%, rgba(150, 25, 10, 0.1) 48%, transparent 76%);
+  animation: fireBreathBottom 6s ease-in-out infinite alternate;
+}
+
+@keyframes fireBreathTop {
+  0% { opacity: 0.75; transform: translateX(-50%) scale(0.94); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+}
+
+@keyframes fireBreathBottom {
+  0% { opacity: 0.7; transform: translateX(-50%) scale(0.95); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+}
+
+#ambientParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gold-shimmer {
+  background: linear-gradient(135deg, #fff7d6 0%, #f6da88 25%, #dfb858 50%, #b88b2b 75%, #f6da88 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 16px rgba(223, 186, 106, 0.4));
+}
+
+.gold-divider {
+  width: 100%;
+  max-width: 320px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+  margin: 18px auto;
+  position: relative;
+}
+
+.gold-divider::after {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold-light);
+  font-size: 8px;
+  background: var(--bg-deep);
+  padding: 0 8px;
+}
+
+.clause {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 65px 20px 110px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.elf-title-wrap {
+  margin-bottom: 12px;
+}
+
+.elf-text {
+  font-family: 'ElffontRock', 'ElffontFern', serif;
+  font-size: 1.45rem;
+  letter-spacing: 0.35em;
+  padding-left: 0.35em;
+  color: var(--gold-light);
+  text-shadow: 0 0 16px rgba(245, 215, 127, 0.55);
+  display: inline-block;
+  user-select: none;
+}
+
+h1.main-title {
+  font-size: clamp(2.2rem, 7.8vw, 4.6rem);
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  padding-left: 0.24em;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+/* Rules Panel */
+.rules-panel {
+  background: linear-gradient(155deg, rgba(22, 20, 32, 0.95), rgba(12, 11, 17, 0.98));
+  border: 1px solid rgba(223, 186, 106, 0.35);
+  border-radius: 4px;
+  padding: 42px 38px;
+  margin: 25px auto 65px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 0 45px rgba(223, 186, 106, 0.04);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.rules-panel::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(223, 186, 106, 0.12);
+  pointer-events: none;
+}
+
+.rules-heading {
+  font-size: 1.4rem;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+  color: var(--gold-light);
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 700;
+  text-shadow: 0 0 14px rgba(223, 186, 106, 0.35);
+}
+
+.rules-main-intro {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.rules-main-intro p {
+  font-size: 1.15rem;
+  line-height: 2.2;
+  letter-spacing: 0.08em;
+  color: var(--text-gold-bright);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(223, 186, 106, 0.25);
+}
+
+.rules-sub-section {
+  border-top: 1px solid rgba(223, 186, 106, 0.2);
+  padding-top: 22px;
+}
+
+.rules-sub-label {
+  font-size: 0.88rem;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+  color: var(--gold-mid);
+  margin-bottom: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.rules-sub-content p {
+  font-size: 0.95rem;
+  line-height: 2.2;
+  letter-spacing: 0.04em;
+  color: var(--text-gold-muted);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.rules-sub-content p:last-child {
+  margin-bottom: 0;
+}
+
+.rule-line {
+  display: block;
+}
+
+/* Interactive Envelope Stage */
+.unseal-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.unseal-title {
+  font-size: 1.3rem;
+  letter-spacing: 0.28em;
+  padding-left: 0.28em;
+  color: var(--gold-light);
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px rgba(223, 186, 106, 0.3);
+}
+
+.unseal-hint {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: var(--text-gold-muted);
+  margin-bottom: 30px;
+  transition: all 0.3s;
+}
+
+/* Envelope Stage (Strict 2D z-index stacking to prevent 3D plane clipping) */
+.envelope-stage {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  min-height: 360px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 350px;
+  height: 240px;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.envelope-wrapper:hover:not(.opening):not(.opened) {
+  transform: translateY(-8px);
+}
+
+/* Layer 1: Envelope Back & Lining */
+.env-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, #1c1824 0%, #100e16 60%, #09080c 100%);
+  border: 1px solid rgba(223, 186, 106, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.92), inset 0 0 50px rgba(0,0,0,0.8);
+  z-index: 1;
+}
+
+.env-lining {
+  position: absolute;
+  inset: 2px;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(223, 186, 106, 0.12) 0%, transparent 70%),
+    linear-gradient(135deg, #18141f 0%, #0d0b12 100%);
+  border-radius: 3px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.env-lining::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(223, 186, 106, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(223, 186, 106, 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(223, 186, 106, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(223, 186, 106, 0.05) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+/* Layer 3: Secret Card Preview Inside (Strictly above opened flap z-index:2, below pocket z-index:4) */
+.secret-card-preview {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 310px;
+  height: 200px;
+  background: linear-gradient(160deg, #1d192b, #100e18);
+  border: 1px solid rgba(223, 186, 106, 0.5);
+  border-radius: 3px;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.preview-tag.elf-text {
+  font-size: 1.05rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px rgba(245, 215, 127, 0.45);
+}
+
+.preview-line {
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+}
+
+/* Layer 4 & 5: Envelope Front Pocket Folds */
+.env-pocket-left {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 50% 52%, 0 100%);
+  background: linear-gradient(135deg, #1a1722 0%, #110e17 100%);
+  border-left: 1px solid rgba(223, 186, 106, 0.3);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.env-pocket-right {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(100% 0, 50% 52%, 100% 100%);
+  background: linear-gradient(225deg, #1a1722 0%, #110e17 100%);
+  border-right: 1px solid rgba(223, 186, 106, 0.3);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.env-pocket-bottom {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+  background: linear-gradient(180deg, #201c2a 0%, #121019 100%);
+  border-bottom: 1px solid rgba(223, 186, 106, 0.35);
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.6);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Layer 6 (Closed) -> Layer 2 (Opened): Envelope Top Flap */
+.env-flap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(180deg, #2a2333 0%, #181420 100%);
+  border-top: 1px solid rgba(223, 186, 106, 0.45);
+  transform-origin: top center;
+  transform: perspective(1000px) rotateX(0deg);
+  z-index: 6;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.65);
+  pointer-events: none;
+}
+
+/* Layer 7: Wax Seal Assembly */
+.wax-seal-wrapper {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 86px;
+  height: 86px;
+  z-index: 7;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.9));
+  transition: transform 0.3s ease;
+}
+
+.envelope-wrapper:hover .wax-seal-wrapper {
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.wax-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, var(--wax-bright) 0%, var(--wax-main) 52%, var(--wax-deep) 88%, #200202 100%);
+  box-shadow: 
+    0 0 25px rgba(200, 36, 36, 0.45),
+    inset 0 2px 5px rgba(255, 160, 160, 0.5),
+    inset 0 -3px 8px rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wax-drip {
+  position: absolute;
+  background: var(--wax-main);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.wax-drip-1 { width: 22px; height: 18px; top: -4px; left: 16px; transform: rotate(-15deg); }
+.wax-drip-2 { width: 20px; height: 16px; bottom: -3px; right: 18px; transform: rotate(20deg); }
+.wax-drip-3 { width: 16px; height: 22px; top: 32px; left: -5px; }
+
+.shield-svg {
+  width: 58px;
+  height: 58px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));
+}
+
+.wax-shard {
+  position: fixed;
+  border-radius: 2px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* Revealed Role Card */
+.role-card-display {
+  display: none;
+  width: 100%;
+  max-width: 640px;
+  background: linear-gradient(160deg, #171422 0%, #0c0b12 60%, #12101a 100%);
+  border: 1px solid rgba(223, 186, 106, 0.45);
+  border-radius: 4px;
+  padding: 48px 42px;
+  box-shadow: 
+    0 30px 80px rgba(0,0,0,0.95), 
+    inset 0 0 50px rgba(223, 186, 106, 0.05),
+    0 0 30px rgba(223, 186, 106, 0.12);
+  position: relative;
+  margin: 10px auto 0;
+}
+
+.role-card-display.active {
+  display: block;
+}
+
+.role-card-display::before,
+.role-card-display::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--gold-main);
+  opacity: 0.7;
+}
+.role-card-display::before { top: 10px; left: 10px; border-top: 1px solid; border-left: 1px solid; }
+.role-card-display::after { bottom: 10px; right: 10px; border-bottom: 1px solid; border-right: 1px solid; }
+
+.role-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(223, 186, 106, 0.22);
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+}
+
+.role-tag.elf-text {
+  font-size: 1.15rem;
+  letter-spacing: 0.3em;
+  padding-left: 0.3em;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+  text-shadow: 0 0 14px rgba(245, 215, 127, 0.5);
+  display: inline-block;
+}
+
+.role-name {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.role-identity {
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  line-height: 1.7;
+  color: var(--gold-light);
+  margin-top: 6px;
+}
+
+.role-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.role-item {
+  position: relative;
+}
+
+.role-item-label {
+  font-size: 0.92rem;
+  color: var(--gold-light);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.role-item-label::before {
+  content: '◆';
+  font-size: 0.65rem;
+  color: var(--gold-mid);
+}
+
+.role-item-text {
+  font-size: 1.05rem;
+  line-height: 2.05;
+  color: var(--text-gold-body);
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+/* Personal Puzzle Verification Box */
+.puzzle-box {
+  margin-top: 14px;
+  background: rgba(10, 9, 14, 0.7);
+  border: 1px solid rgba(223, 186, 106, 0.25);
+  border-radius: 4px;
+  padding: 20px 22px;
+}
+
+.puzzle-box-title {
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.puzzle-input-row {
+  display: flex;
+  gap: 10px;
+  max-width: 420px;
+}
+
+.puzzle-input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  background: rgba(18, 16, 24, 0.9);
+  border: 1px solid rgba(223, 186, 106, 0.35);
+  border-radius: 3px;
+  padding: 10px 14px;
+  color: var(--text-gold-bright);
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.puzzle-input:focus {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 12px rgba(223, 186, 106, 0.25);
+}
+
+.puzzle-btn {
+  background: linear-gradient(135deg, var(--gold-mid), var(--gold-main));
+  border: none;
+  color: #120e06;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 0.15em;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.puzzle-btn:hover {
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+  box-shadow: 0 4px 15px rgba(223, 186, 106, 0.35);
+}
+
+.puzzle-feedback {
+  font-size: 0.92rem;
+  margin-top: 12px;
+  letter-spacing: 0.08em;
+  min-height: 1.4em;
+  line-height: 1.6;
+}
+
+.feedback-ok {
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.45);
+  font-weight: 600;
+}
+
+.feedback-err {
+  color: #ff5252;
+  text-shadow: 0 0 10px rgba(255, 82, 82, 0.4);
+}
+
+.ability-revealed {
+  background: linear-gradient(145deg, rgba(223, 186, 106, 0.15), rgba(18, 16, 24, 0.8));
+  border: 1px solid var(--gold-main);
+  border-radius: 4px;
+  padding: 16px 20px;
+  color: var(--text-gold-bright);
+  font-size: 1.1rem;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 20px rgba(223, 186, 106, 0.2);
+  margin-top: 12px;
+  display: none;
+}
+
+.ability-revealed.show {
+  display: block;
+  animation: revealShine 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealShine {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shakeInput {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+footer {
+  text-align: center;
+  margin-top: 90px;
+  border-top: 1px solid rgba(223, 186, 106, 0.15);
+  padding-top: 35px;
+}
+
+footer .elf-text {
+  font-size: 1.15rem;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 36px 14px 70px;
+  }
+  header {
+    padding-bottom: 24px;
+  }
+  .elf-text {
+    font-size: clamp(0.92rem, 4vw, 1.2rem);
+    letter-spacing: 0.16em;
+    padding-left: 0.16em;
+  }
+  h1.main-title {
+    font-size: clamp(2rem, 9.2vw, 2.75rem);
+    letter-spacing: 0.15em;
+    padding-left: 0.15em;
+    white-space: nowrap;
+  }
+  .rules-panel {
+    padding: 28px 18px;
+    margin: 16px auto 45px;
+  }
+  .rules-heading {
+    font-size: 1.2rem;
+    letter-spacing: 0.24em;
+    padding-left: 0.24em;
+    margin-bottom: 18px;
+  }
+  .rules-main-intro {
+    margin-bottom: 20px;
+  }
+  .rules-main-intro p {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .rules-main-intro p:last-child {
+    margin-bottom: 0;
+  }
+  .rules-sub-section {
+    padding-top: 18px;
+  }
+  .rules-sub-label {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+  .rules-sub-content p {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+    margin-bottom: 16px;
+  }
+  .rule-line {
+    margin-bottom: 6px;
+  }
+  .rule-line:last-child {
+    margin-bottom: 0;
+  }
+  .unseal-title {
+    font-size: 1.15rem;
+    letter-spacing: 0.22em;
+    padding-left: 0.22em;
+  }
+  .unseal-hint {
+    margin-bottom: 16px;
+  }
+  .envelope-stage {
+    min-height: 290px;
+    padding-top: 50px;
+  }
+  .envelope-wrapper {
+    width: min(290px, 84vw);
+    height: calc(min(290px, 84vw) * 0.685);
+  }
+  .secret-card-preview {
+    width: 88%;
+    height: 82%;
+    top: 9%;
+    padding: 14px;
+  }
+  .preview-tag.elf-text {
+    font-size: 0.88rem;
+    letter-spacing: 0.2em;
+    padding-left: 0.2em;
+  }
+  .wax-seal-wrapper {
+    width: 72px;
+    height: 72px;
+  }
+  .shield-svg {
+    width: 48px;
+    height: 48px;
+  }
+  .wax-drip-1 { width: 18px; height: 14px; top: -3px; left: 13px; }
+  .wax-drip-2 { width: 16px; height: 13px; bottom: -2px; right: 14px; }
+  .wax-drip-3 { width: 13px; height: 18px; top: 26px; left: -4px; }
+  .role-card-display {
+    padding: 30px 20px;
+  }
+  .role-header {
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+  }
+  .role-tag.elf-text {
+    font-size: 1rem;
+    letter-spacing: 0.22em;
+    padding-left: 0.22em;
+  }
+  .role-name {
+    font-size: 2rem;
+    letter-spacing: 0.18em;
+    padding-left: 0.18em;
+  }
+  .role-identity {
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+  }
+  .role-body {
+    gap: 20px;
+  }
+  .role-item-text {
+    font-size: 0.96rem;
+    line-height: 1.9;
+  }
+  .puzzle-box {
+    padding: 16px 14px;
+  }
+  .puzzle-input-row {
+    max-width: 100%;
+  }
+  .ability-revealed {
+    font-size: 0.98rem;
+    padding: 14px 16px;
+  }
+  footer {
+    margin-top: 65px;
+    padding-top: 28px;
+  }
+  footer .elf-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    padding-left: 0.2em;
+  }
+}
+
+@media (max-width: 420px) {
+  .puzzle-input-row {
+    flex-direction: column;
+  }
+  .puzzle-btn {
+    width: 100%;
+    padding: 11px 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="ambient-fire-bg">
+  <div class="fire-glow-top"></div>
+  <div class="fire-glow-bottom"></div>
+</div>
+
+<canvas id="ambientParticles"></canvas>
+
+<div class="container">
+  <header>
+    <div class="elf-title-wrap">
+      <span class="elf-text">ㄖㄨㄟˋ ㄌㄨㄥˊ ㄉㄜ˙ ㄐㄧˋ ㄇㄡˊ</span>
+    </div>
+    <h1 class="main-title gold-shimmer">瑞龍的計謀</h1>
+    <div class="gold-divider"></div>
+  </header>
+
+  <div class="rules-panel">
+    <div class="rules-heading">遊 戲 規 則</div>
+    
+    <div class="rules-main-intro">
+      <p><span class="clause">一場關於信任、推理與選擇的考驗，</span><span class="clause">即將開始。</span></p>
+      <p><span class="clause">每個人都握有自己的秘密，</span><span class="clause">請仔細閱讀你的專屬角色卡。</span></p>
+    </div>
+
+    <div class="rules-sub-section">
+      <div class="rules-sub-label">規則補充</div>
+      <div class="rules-sub-content">
+        <p>
+          <span class="rule-line"><span class="clause">團體任務依照編號順序進行，</span><span class="clause">每個地點最多有兩枚金幣，</span><span class="clause">請自行尋找。</span></span>
+          <span class="rule-line"><span class="clause">請在時限內合作解題，</span><span class="clause">同時留意每個人的選擇。</span></span>
+          <span class="rule-line"><span class="clause">你的角色卡只屬於你，</span><span class="clause">請勿讓其他玩家看見，</span><span class="clause">也不要透露自己的身分。</span></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="unseal-section">
+    <div class="unseal-title">專 屬 角 色</div>
+    <div class="unseal-hint" id="unsealHint"></div>
+
+    <div class="envelope-stage" id="stage">
+      <div class="envelope-wrapper" id="envelopeWrapper" onclick="unsealEnvelope()">
+        <div class="env-back"></div>
+        <div class="env-lining"></div>
+
+        <div class="secret-card-preview" id="cardGhost">
+          <span class="preview-tag elf-text">ㄇㄧˋ ㄇㄧˋ ㄐㄧㄠˇ ㄙㄜˋ</span>
+          <div class="preview-line"></div>
+        </div>
+
+        <div class="env-pocket-left"></div>
+        <div class="env-pocket-right"></div>
+        <div class="env-pocket-bottom"></div>
+        <div class="env-flap-top" id="flapTop"></div>
+
+        <div class="wax-seal-wrapper" id="waxSeal">
+          <div class="wax-drip wax-drip-1"></div>
+          <div class="wax-drip wax-drip-2"></div>
+          <div class="wax-drip wax-drip-3"></div>
+          
+          <div class="wax-body" id="waxBody">
+            <svg viewBox="0 0 100 100" class="shield-svg">
+              <defs>
+                <linearGradient id="goldRelief" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fff8d6"/>
+                  <stop offset="30%" stop-color="#f5d77f"/>
+                  <stop offset="65%" stop-color="#dfba6a"/>
+                  <stop offset="100%" stop-color="#8c681e"/>
+                </linearGradient>
+              </defs>
+              <path d="M 50 12 C 70 12, 85 15, 88 26 C 88 56, 70 78, 50 89 C 30 78, 12 56, 12 26 C 15 15, 30 12, 50 12 Z" 
+                    fill="none" stroke="url(#goldRelief)" stroke-width="2.6" />
+              <path d="M 50 18 C 65 18, 77 21, 80 29 C 80 52, 66 71, 50 81 C 34 71, 20 52, 20 29 C 23 21, 35 18, 50 18 Z" 
+                    fill="none" stroke="#f5d77f" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.8" />
+              <path d="M 37 27 L 41 34 L 50 26 L 59 34 L 63 27 L 61 38 L 39 38 Z" fill="url(#goldRelief)" />
+              <circle cx="37" cy="25" r="1.6" fill="#fff8d6" />
+              <circle cx="50" cy="24" r="2.0" fill="#fff8d6" />
+              <circle cx="63" cy="25" r="1.6" fill="#fff8d6" />
+              <line x1="32" y1="43" x2="68" y2="71" stroke="#fff8d6" stroke-width="2.2" stroke-linecap="round" />
+              <line x1="29" y1="48" x2="38" y2="39" stroke="#dfba6a" stroke-width="2.6" stroke-linecap="round" />
+              <line x1="68" y1="43" x2="32" y2="71" stroke="#fff8d6" stroke-width="2.2" stroke-linecap="round" />
+              <line x1="71" y1="48" x2="62" y2="39" stroke="#dfba6a" stroke-width="2.6" stroke-linecap="round" />
+              <polygon points="50,46 52.5,52 59,54 52.5,56.5 50,63 47.5,56.5 41,54 47.5,52" fill="#fff8d6" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Revealed Role Card -->
+    <div class="role-card-display" id="roleCard">
+      <div class="role-header">
+        <div class="role-tag elf-text">ㄌㄩㄝˋㄉㄨㄛˊㄓㄜˇ</div>
+        <div class="role-name gold-shimmer">掠奪者</div>
+        <div class="role-identity">◆ 身分：一般玩家（不可被知道身分）</div>
+      </div>
+
+      <div class="role-body">
+        <div class="role-item">
+          <div class="role-item-label">團體任務</div>
+          <div class="role-item-text">幫助大家成功抵達終點。</div>
+        </div>
+
+        <div class="role-item">
+          <div class="role-item-label">特殊能力</div>
+          <div class="role-item-text" id="lockedNotice">
+            🔒 特殊能力鎖定中（必須先解開個人謎題）
+          </div>
+
+          <div class="ability-revealed" id="revealedAbility">
+            ◆ 特殊能力已啟用：你可以無條件搶奪另一位玩家的一枚硬幣。
+          </div>
+
+          <div class="puzzle-box" id="puzzleBox">
+            <div class="puzzle-box-title">個人謎題驗證</div>
+            <div class="puzzle-input-row" id="inputRow">
+              <input type="text" class="puzzle-input" id="puzzleInput" placeholder="請輸入謎題解答" autocomplete="off" onkeydown="if(event.key==='Enter')verifyPuzzle()">
+              <button class="puzzle-btn" onclick="verifyPuzzle()">驗證</button>
+            </div>
+            <div class="puzzle-feedback" id="feedback"></div>
+          </div>
+        </div>
+
+        <div class="role-item">
+          <div class="role-item-label">個人勝利條件</div>
+          <div class="role-item-text">團體任務成功，並取得全場最多硬幣。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="elf-text">ㄖㄨㄟˋ ㄌㄨㄥˊ ㄉㄜ˙ ㄐㄧˋ ㄇㄡˊ</div>
+  </footer>
+</div>
+
+<script src="gsap.min.js"></script>
+<script>
+if (typeof gsap === 'undefined') {
+  document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>');
+}
+</script>
+<script>
+// Ambient Drifting Fire Embers & Sparks
+(function() {
+  const canvas = document.getElementById('ambientParticles');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  const particles = [];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const colors = [
+    { r: 255, g: 220, b: 100 },
+    { r: 255, g: 160, b: 40 },
+    { r: 255, g: 90, b: 20 },
+    { r: 230, g: 45, b: 15 }
+  ];
+
+  for (let i = 0; i < 65; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 2.2 + 0.6,
+      baseAlpha: Math.random() * 0.5 + 0.15,
+      flickerSpeed: Math.random() * 0.04 + 0.015,
+      flickerAngle: Math.random() * Math.PI * 2,
+      speedX: (Math.random() - 0.5) * 0.35,
+      speedY: -(Math.random() * 0.55 + 0.2),
+      waverSpeed: Math.random() * 0.02 + 0.01,
+      waverAngle: Math.random() * Math.PI * 2,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+    for (let p of particles) {
+      p.waverAngle += p.waverSpeed;
+      p.flickerAngle += p.flickerSpeed;
+
+      p.x += p.speedX + Math.sin(p.waverAngle) * 0.35;
+      p.y += p.speedY;
+
+      if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; }
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+
+      const alpha = Math.max(0.05, Math.min(0.85, p.baseAlpha + Math.sin(p.flickerAngle) * 0.2));
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0.5)`;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+    requestAnimationFrame(render);
+  }
+  render();
+})();
+
+let hasOpened = false;
+
+function spawnWaxShards(sealEl) {
+  const rect = sealEl.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 24; i++) {
+    const shard = document.createElement('div');
+    shard.className = 'wax-shard';
+    shard.style.left = cx + 'px';
+    shard.style.top = cy + 'px';
+
+    const size = 3 + Math.random() * 7;
+    shard.style.width = size + 'px';
+    shard.style.height = size + 'px';
+    shard.style.background = `hsl(${355 + Math.random() * 15}, ${80 + Math.random() * 15}%, ${28 + Math.random() * 18}%)`;
+
+    document.body.appendChild(shard);
+
+    const angle = (Math.PI * 2 / 24) * i + (Math.random() - 0.5) * 0.5;
+    const distance = 40 + Math.random() * 110;
+    const targetX = Math.cos(angle) * distance;
+    const targetY = Math.sin(angle) * distance + (Math.random() * 40);
+    const rotation = (Math.random() - 0.5) * 720;
+
+    if (window.gsap) {
+      gsap.to(shard, {
+        x: targetX,
+        y: targetY,
+        rotation: rotation,
+        opacity: 0,
+        scale: 0.2,
+        duration: 0.75 + Math.random() * 0.35,
+        ease: "power2.out",
+        onComplete: () => shard.remove()
+      });
+    } else {
+      setTimeout(() => shard.remove(), 750);
+    }
+  }
+}
+
+function unsealEnvelope() {
+  if (hasOpened) return;
+  hasOpened = true;
+
+  const wrapper = document.getElementById('envelopeWrapper');
+  const seal = document.getElementById('waxSeal');
+  const flap = document.getElementById('flapTop');
+  const ghost = document.getElementById('cardGhost');
+  const stage = document.getElementById('stage');
+  const roleCard = document.getElementById('roleCard');
+  const hint = document.getElementById('unsealHint');
+  const riseY = window.innerWidth <= 600 ? -95 : -125;
+
+  wrapper.classList.add('opening');
+  if (hint) {
+    if (window.gsap) gsap.to(hint, { opacity: 0, y: -10, duration: 0.35 });
+    else hint.style.opacity = '0';
+  }
+
+  spawnWaxShards(seal);
+
+  if (window.gsap) {
+    const tl = gsap.timeline();
+
+    // 1. Seal cracks & breaks
+    tl.to(seal, {
+      scale: 1.25,
+      opacity: 0,
+      rotation: 10,
+      duration: 0.45,
+      ease: "power2.out"
+    })
+    // 2. Top flap unfolds smoothly with 2D layer z-index swap at 90deg (zero 3D plane clipping!)
+    .to(flap, {
+      rotationX: 180,
+      transformPerspective: 1000,
+      duration: 0.9,
+      ease: "power2.inOut",
+      onUpdate: function() {
+        const rx = gsap.getProperty(flap, "rotationX");
+        if (rx >= 90) {
+          flap.style.zIndex = '2'; // Strictly behind paper (z-index: 3)
+          flap.style.background = 'linear-gradient(180deg, #1b1623 0%, #120f18 100%)';
+          ghost.style.opacity = '1';
+        }
+      }
+    }, "-=0.15")
+    // 3. Paper rises smoothly in front of the opened flap (z-index: 3 over z-index: 2)
+    .to(ghost, {
+      y: riseY,
+      duration: 0.95,
+      ease: "power2.out"
+    }, "-=0.15")
+    // 4. Envelope gently dissolves and full role card unfolds
+    .to([wrapper, stage], {
+      opacity: 0,
+      y: 15,
+      scale: 0.95,
+      duration: 0.5,
+      ease: "power2.inOut",
+      onComplete: () => {
+        stage.style.display = 'none';
+        roleCard.classList.add('active');
+        gsap.fromTo(roleCard, 
+          { opacity: 0, y: 35, scale: 0.95 }, 
+          { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: "power3.out" }
+        );
+      }
+    }, "+=0.15");
+
+  } else {
+    seal.style.opacity = '0';
+    setTimeout(() => {
+      flap.style.transition = 'transform 0.8s ease';
+      flap.style.transform = 'perspective(1000px) rotateX(180deg)';
+      setTimeout(() => {
+        flap.style.zIndex = '2';
+        ghost.style.opacity = '1';
+      }, 400);
+    }, 200);
+    setTimeout(() => {
+      ghost.style.transition = 'transform 0.9s ease';
+      ghost.style.transform = `translateX(-50%) translateY(${riseY}px)`;
+    }, 900);
+    setTimeout(() => {
+      stage.style.display = 'none';
+      roleCard.classList.add('active');
+    }, 2000);
+  }
+}
+
+// Celebration Confetti Effect (Only triggered on correct puzzle answer)
+function launchConfetti() {
+  const colors = ['#ffd700', '#fff4b8', '#dfba6a', '#f59e0b', '#e53935', '#ffffff', '#ff8f00'];
+  const count = 90;
+
+  for (let i = 0; i < count; i++) {
+    const conf = document.createElement('div');
+    const isRibbon = Math.random() > 0.35;
+    const w = isRibbon ? (6 + Math.random() * 6) : (7 + Math.random() * 5);
+    const h = isRibbon ? (12 + Math.random() * 10) : w;
+
+    conf.style.position = 'fixed';
+    conf.style.width = w + 'px';
+    conf.style.height = h + 'px';
+    conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    conf.style.borderRadius = isRibbon ? '2px' : '50%';
+    conf.style.zIndex = '10000';
+    conf.style.pointerEvents = 'none';
+    conf.style.boxShadow = '0 0 6px rgba(255, 215, 0, 0.35)';
+
+    // Dual cannon burst from left & right + center fountain
+    const side = i % 3;
+    const startX = side === 0 ? window.innerWidth * 0.15 : (side === 1 ? window.innerWidth * 0.85 : window.innerWidth * 0.5);
+    const startY = window.innerHeight * 0.65;
+
+    conf.style.left = startX + 'px';
+    conf.style.top = startY + 'px';
+    document.body.appendChild(conf);
+
+    const spreadX = (Math.random() - 0.5) * (window.innerWidth * 0.85);
+    const peakY = -(180 + Math.random() * 340);
+    const endY = 220 + Math.random() * 300;
+    const dur = 2.0 + Math.random() * 1.4;
+
+    if (window.gsap) {
+      const tl = gsap.timeline({ onComplete: () => conf.remove() });
+      tl.to(conf, {
+        x: spreadX * 0.6,
+        y: peakY,
+        rotation: (Math.random() - 0.5) * 360,
+        rotationX: Math.random() * 360,
+        rotationY: Math.random() * 360,
+        duration: dur * 0.38,
+        ease: "power2.out"
+      })
+      .to(conf, {
+        x: spreadX,
+        y: endY,
+        rotation: "+=" + ((Math.random() - 0.5) * 540),
+        rotationX: "+=360",
+        rotationY: "+=360",
+        opacity: 0,
+        duration: dur * 0.62,
+        ease: "power1.in"
+      });
+    } else {
+      setTimeout(() => conf.remove(), 2500);
+    }
+  }
+}
+
+// Personal Puzzle Verification: Correct Answer is "豬"
+function verifyPuzzle() {
+  const input = document.getElementById('puzzleInput');
+  const feedback = document.getElementById('feedback');
+  const inputRow = document.getElementById('inputRow');
+  const lockedNotice = document.getElementById('lockedNotice');
+  const revealedAbility = document.getElementById('revealedAbility');
+
+  const val = input.value.trim();
+
+  if (val === '豬') {
+    feedback.className = 'puzzle-feedback feedback-ok';
+    feedback.innerHTML = '◆ 恭喜答對！';
+    inputRow.style.display = 'none';
+    lockedNotice.style.display = 'none';
+    revealedAbility.classList.add('show');
+    launchConfetti();
+    if (window.gsap) {
+      gsap.from(revealedAbility, { scale: 0.95, duration: 0.5, ease: "back.out(1.7)" });
+    }
+  } else {
+    feedback.className = 'puzzle-feedback feedback-err';
+    feedback.innerHTML = '解答不正確，請重新確認實體謎題。';
+    input.style.animation = 'none';
+    input.offsetHeight;
+    input.style.animation = 'shakeInput 0.4s ease';
+  }
+}
+</script>
+
+</body>
+</html>
